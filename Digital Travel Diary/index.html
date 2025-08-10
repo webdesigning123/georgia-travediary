@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Travel Diary — Kyoto Spring Diary</title>
+  <meta name="description" content="Digital travel diary: Kyoto Spring Diary. A week under cherry blossoms with pages you can flip like a real book. Photos, notes, and a mini table of contents." />
+  <link rel="canonical" href="." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Digital Travel Diary — Kyoto Spring Diary" />
+  <meta property="og:description" content="Flip through a lifelike book of our Kyoto spring trip: photos, notes, and a mini table of contents." />
+  <meta property="og:image" content="assets/kyoto-cover.jpg" />
+  <meta property="og:url" content="." />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Digital Travel Diary — Kyoto Spring Diary" />
+  <meta name="twitter:description" content="Flip through a lifelike book of our Kyoto spring trip." />
+  <meta name="twitter:image" content="assets/kyoto-cover.jpg" />
+
+  <!-- Preload cover for fast first paint -->
+  <link rel="preload" as="image" href="assets/kyoto-cover.jpg" imagesrcset="assets/kyoto-cover.jpg 1200w, assets/kyoto-cover@2x.jpg 2000w" imagesizes="(max-width: 800px) 100vw, 800px">
+
+  <!-- Inter (optional). If you prefer fully system fonts, remove -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/book.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Kyoto Spring Diary — Digital Travel Diary",
+    "author": {
+      "@type": "Person",
+      "name": "Your Name"
+    },
+    "about": "Travel diary",
+    "datePublished": "2025-03-28",
+    "dateModified": "2025-04-03",
+    "inLanguage": "en",
+    "image": "assets/kyoto-cover.jpg",
+    "keywords": "travel diary, Kyoto, cherry blossoms",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "."
+    }
+  }
+  </script>
+</head>
+<body class="theme" data-js="boot">
+  <a class="skip-link" href="#book" tabindex="0">Skip to book</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <h1 class="site-title">Digital Travel Diary</h1>
+      <nav class="site-nav" role="navigation" aria-label="Primary">
+        <button id="btnHome" class="btn" aria-label="Go to front cover" title="Home (Home)">Home</button>
+        <button id="btnPrev" class="btn" aria-label="Previous page" title="Prev (←)">Prev</button>
+        <button id="btnNext" class="btn" aria-label="Next page" title="Next (→ / Space)">Next</button>
+        <button id="btnEnd" class="btn" aria-label="Go to back cover" title="End (End)">End</button>
+        <button id="btnToc" class="btn" aria-haspopup="dialog" aria-controls="toc" aria-expanded="false" title="Table of contents">TOC</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" role="main">
+    <section id="book" class="book" role="document" aria-label="Travel diary book">
+      <div class="book-viewport" id="bookViewport">
+        <!-- book sheets are injected here -->
+        <div id="skeleton" class="skeleton" aria-hidden="true">
+          <div class="sheet-skeleton"></div>
+          <div class="sheet-skeleton"></div>
+        </div>
+        <div id="error" class="error" hidden>
+          <p>We couldn't load this diary. Please check your connection or try again later.</p>
+        </div>
+        <div id="empty" class="empty" hidden>
+          <p>No pages yet. Add content in <code>data/pages.json</code>.</p>
+        </div>
+      </div>
+
+      <footer class="book-footer">
+        <div class="progress" aria-hidden="true">
+          <div id="progressBar" class="progress-bar" style="width:0%"></div>
+        </div>
+        <div id="pageAnnounce" class="page-announce" aria-live="polite" aria-atomic="true">Page 1</div>
+      </footer>
+
+      <!-- Mini TOC overlay -->
+      <dialog id="toc" class="toc" aria-labelledby="tocTitle">
+        <form method="dialog">
+          <header class="toc-header">
+            <h2 id="tocTitle">Table of Contents</h2>
+            <button id="tocClose" class="btn btn-ghost" value="close" aria-label="Close table of contents">Close</button>
+          </header>
+          <div id="tocList" class="toc-list" role="navigation" aria-label="In‑book">
+            <!-- injected -->
+          </div>
+        </form>
+      </dialog>
+    </section>
+  </main>
+
+  <aside class="help" aria-label="Help">
+    <details>
+      <summary>Controls</summary>
+      <ul>
+        <li>Keyboard: ←/→ turn; Space next; Home/End jump</li>
+        <li>Touch: swipe; tap edges; drag corner to peel</li>
+        <li>Click: click corners/edges; TOC to jump</li>
+      </ul>
+    </details>
+  </aside>
+
+  <script defer src="scripts/data.js"></script>
+  <script defer src="scripts/a11y.js"></script>
+  <script defer src="scripts/book.js"></script>
+  <script defer src="scripts/app.js"></script>
+</body>
+</html>
